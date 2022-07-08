@@ -1,0 +1,112 @@
+
+%-----------------------------------------------------------------------------------------------------
+%  نمایه و واژه‌نامه‌های فارسی به انگلیسی و انگلیسی به فارسی با استفاده از xindy تولید می‌شوند.
+%  برای تولید این بخش‌ها ابتدا با دنبال کردن فرآیند زیر فرمان مناسب را در TexMaker تعریف کنید:
+%  از منوی User گزینهٔ User Commands و سپس Edit User Commands را انتخاب کنید. در جعبه Menu Item عبارت Xindy و در جعبه Command  دستور زیر را قرار دهید (توجه کنید که علامت %  در ابتدای خط جزو دستور نیست) و OK را کلیک کنید
+% xindy -L persian-variant2 -C utf8 -I  xindy -M %.xdy -t %.edic -o %.edics %.edico  | xindy -L persian-variant2 -C utf8 -I  xindy -M %.xdy -t %.fdic -o %.fdics %.fdico
+% با توجه به فایل نمونه از دستورات inpdic، indic و ingls برای اضافه کردن لغات به نمایه یا واژه‌نامه استفاده کنید.
+% برای مشاهده نمایه و واژه‌نامه ابتدا Quick Build و پس از تکمیل اجرای آن از منوی User گزینه User Commands و سپس Xindy را اجرا کنید. بعد از آن دوباره Quick Build را دو بار اجرا کنید.
+
+
+\def\sseq{\subseteq}
+\def\BB{\mathbb{B}}
+\def\st{s. t.}
+\def\by{{\boldsymbol y}}
+\def\bz{{\boldsymbol z}}
+\def\bx{{\boldsymbol x}}
+\def\bu{{\boldsymbol u}}
+\def\bv{{\boldsymbol v}}
+
+% اگر از تنظیم draftmode استفاده کنید صفحه‌های مربوط به تقدیم، تشکر و جدول مشخصات پایان‌نامه/رساله نمایش داده نمی‌شود. برای تولید نسخهٔ نهایی draftmode را حذف کنید.
+% تنظیم phd و msc به ترتیب برای تولید رساله و پایان‌نامه به کار می‌روند.
+\documentclass[phd,draftmode]{AlzahraThesis}
+
+% نسخهٔ نهایی برای ارائه به کتابخانه
+%\documentclass[phd]{AlzahraThesis}
+
+% در این بخش می‌توانید صفحه تقدیر و تشکر را به کلاس معرفی کنید. اگر آن را کامنت کنید این صفحه در خروجی نمایش داده نمی‌شود.
+\acknowledgment{
+\input{acknowledgementpage}
+}
+% در این بخش می‌توانید صفحه تقدیم را به کلاس معرفی کنید. اگر آن را کامنت کنید این صفحه در خروجی نمایش داده نمی‌شود.
+\dedication{
+\input{dedicationpage}
+}
+
+% در این بخش مشخصات پایان‌نامه به کلاس معرفی می‌شود. فایل specifications را مشابه نمونه داده شده و مطابق با رساله/پایان‌نامه خود ویرایش کنید.
+\input{specifications}
+
+
+
+
+
+\begin{document}
+
+\begin{spacing}{1.5}
+%فهرست مطالب
+
+\tableofcontents
+%فهرست نمادها و کوته‌نوشت‌ها (علائم اختصاری)
+\input{symbols}
+%%فهرست جدول‌ها
+\listoftables
+\newpage
+%%فهرست شکل‌ها
+\listoffigures
+\newpage
+\end{spacing}
+
+\pagestyle{fancy}
+% پیشگفتار
+\include{preface}
+% محتویات رساله/پایان‌نامه
+\include{chapter1}
+%\include{chapter2}
+%\include{chapter3}
+%\include{chapter4}
+
+%
+
+% برای تولید بخش مراجع از bibtex استفاده می‌شود. 
+\bibliographystyle{plain-fa}
+\bibliography{refs}
+
+\pagestyle{empty}
+
+% بخش مربوط به پیوست‌ها. اگر به این بخش نیاز ندارید می‌توانید این دستورات را کامنت کنید.
+\appendix
+\addcontentsline{toc}{chapter}{پیوست}
+
+
+\include{appendix1}
+
+% دستورات مربوط به تولید خودکار و چاپ نمایه در خروجی. نمایه به طور خودکار تولید می‌شود. اگر به این بخش نیاز ندارید می‌توانید این دستورات را کامنت کنید.
+
+\renewcommand\glossaryname{نمایه}
+\glossarystyle{list}
+\pagestyle{plain}
+\phantomsection‮
+\addcontentsline{toc}{chapter}{نمایه}
+
+\printglossary
+\newpage
+
+%  دستورات مربوط به تولید خودکار و چاپ واژه‌نامهٔ انگلیسی به فارسی در خروجی. اگر به این بخش نیاز ندارید می‌توانید این دستورات را کامنت کنید.
+
+\glossarystyle{mylistEn}
+\printglossary[type=english]
+\newpage
+
+%  دستورات مربوط به تولید خودکار و چاپ واژه‌نامهٔ فارسی به انگلیسی در خروجی. اگر به این بخش نیاز ندارید می‌توانید این دستورات را کامنت کنید.
+
+\glossarystyle{mylistFa}
+\printglossary[type=persian]
+
+
+%  در این بخش مقالات مستخرج از رساله/پایان‌نامه را در صورت وجود بیاورید. اگر به این بخش نیاز ندارید می‌توانید این دستورات را کامنت کنید.
+\newpage
+\section*{فهرست مقاله‌های مستخرج از پایان‌نامه/رساله}
+
+
+
+\end{document}
