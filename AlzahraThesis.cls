@@ -79,7 +79,35 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 %\renewcommand{\glossarymark}[1]{\markright{#1}} 
 }
 
+\def\appendixMode{
+\appendix
+\addcontentsline{toc}{chapter}{پیوست}
+}
 
+\def\includeIndex{
+\renewcommand\glossaryname{نمایه} 
+\glossarystyle{list}
+\pagestyle{plain}
+\phantomsection‮
+\addcontentsline{toc}{chapter}{نمایه}
+
+\printglossary
+\newpage
+}
+
+\def\includeEntoFaDictionary{
+\glossarystyle{mylistEn} 
+\printglossary[type=english]
+\newpage
+
+}
+
+
+\def\includeFatoEnDictionary{
+
+\glossarystyle{mylistFa}
+\printglossary[type=persian]
+}
 
 \newglossarystyle{mylistEn}{
 \glossarystyle{list}\phantomsection
