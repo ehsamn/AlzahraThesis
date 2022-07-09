@@ -4,7 +4,7 @@
 %%  برای تولید این بخش‌ها ابتدا با دنبال کردن فرآیند زیر فرمان مناسب را در TexMaker تعریف کنید:
 %%  از منوی User گزینهٔ User Commands و سپس Edit User Commands را انتخاب کنید. در جعبه Menu Item عبارت Xindy و در جعبه %%  Command  دستور زیر را قرار دهید (توجه کنید که علامت %  در ابتدای خط جزو دستور نیست) و OK را کلیک کنید
 % xindy -L persian-variant2 -C utf8 -I  xindy -M %.xdy -t %.edic -o %.edics %.edico  | xindy -L persian-variant2 -C utf8 -I  xindy -M %.xdy -t %.fdic -o %.fdics %.fdico
-%% با توجه به فایل نمونه از دستورات inpdic، indic و ingls برای اضافه کردن لغات به نمایه یا واژه‌نامه استفاده کنید.
+%% با توجه به فایل نمونه از دستورات inpdic، indic و inind برای اضافه کردن لغات به نمایه یا واژه‌نامه استفاده کنید.
 %% برای مشاهده نمایه و واژه‌نامه ابتدا Quick Build و پس از تکمیل اجرای آن از منوی User گزینه User Commands و سپس Xindy را اجرا کنید. بعد از آن دوباره Quick Build را دو بار اجرا کنید.
 
 
@@ -48,7 +48,10 @@
 
 \tableofcontents
 %فهرست نمادها و کوته‌نوشت‌ها (علائم اختصاری)
+\IncludeNotationPage{
 \input{symbols}
+}
+
 %%فهرست جدول‌ها
 \listoftables
 \newpage
@@ -57,9 +60,13 @@
 \newpage
 \end{spacing}
 
+
 \pagestyle{fancy}
 % پیشگفتار
-\include{preface}
+\IncludePrefacePage{
+\input{preface}
+}
+
 % محتویات رساله/پایان‌نامه
 \include{chapter1}
 %\include{chapter2}

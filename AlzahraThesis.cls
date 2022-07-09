@@ -84,6 +84,25 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 \addcontentsline{toc}{chapter}{پیوست}
 }
 
+ \def\notation#1#2{\parbox[t]{12mm}{#1}\parbox[t]{5.2cm}{#2}\\}
+
+\def\IncludeNotationPage#1{
+\pagestyle{empty}
+\chapter*{فهرست نمادها و کوتاه‌نویس‌ها}
+\phantomsection
+\addcontentsline{toc}{chapter}{فهرست نمادها و کوتاه‌نویس‌ها}
+#1
+}
+
+\def\IncludePrefacePage#1{
+\chapter*{پیشگفتار}
+\phantomsection
+\addcontentsline{toc}{chapter}{پیشگفتار}
+#1
+}
+
+
+
 \def\includeIndex{
 \renewcommand\glossaryname{نمایه} 
 \glossarystyle{list}
@@ -145,7 +164,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 }
 
 % توسط این دستور واژه مورد نظر فقط در هر دو واژه نامه  می آید.
-\newcommand{\ingls}[2]{
+\newcommand{\inind}[2]{
 	\newglossaryentry{fa-#1}{type=persian,name={#1}, sort={#1},description={\lr{#2}}}\glsuseri{fa-#1}
 	\newglossaryentry{en-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-#1}
 }
