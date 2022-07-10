@@ -1174,7 +1174,7 @@ Dissertation
 
 \titleformat{\subsection}{\subsectionfont\bfseries}{\thesubsection}{1em}{}
 \titleformat{\section}{\sectionfont\bfseries}{\thesection}{1em}{}
-\titleformat{\chapter}{\chapterfont\bfseries}{\thechapter}{1em}{}
+%\titleformat{\chapter}{\chapterfont\bfseries}{\thechapter}{1em}{}
 \renewcommand\thesection{\thechapter.\arabic{section}.}
 \renewcommand\thesubsection{\thechapter.\arabic{section}.\arabic{subsection}.}
 \renewcommand\thefigure{\thechapter.\arabic{figure}}
