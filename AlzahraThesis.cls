@@ -108,7 +108,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 \def\includeIndex{
 \renewcommand\glossaryname{نمایه} 
-\myglossarystyle{list}
+\glossarystyle{list}
 \pagestyle{plain}
 \phantomsection‮
 \addcontentsline{toc}{chapter}{نمایه}
