@@ -19,14 +19,15 @@
 
 % اگر از تنظیم draftmode استفاده کنید صفحه‌های مربوط به تقدیم، تشکر و جدول مشخصات پایان‌نامه/رساله نمایش داده نمی‌شود. برای تولید نسخهٔ نهایی draftmode را حذف کنید.
 %% تنظیم phd و msc به ترتیب برای تولید رساله و پایان‌نامه به کار می‌روند.
-\documentclass[phd,draftmode]{AlzahraThesis}
+\documentclass[msc]{AlzahraThesis}
+
 
 %% نسخهٔ نهایی برای ارائه به کتابخانه
 %\documentclass[phd]{AlzahraThesis}
 
 %%  در این بخش می‌توانید صفحه تقدیر و تشکر را به کلاس معرفی کنید. اگر آن را کامنت کنید این صفحه در خروجی نمایش داده نمی‌شود.
 \acknowledgment{
-\input{acknowledgementpage}
+%\input{acknowledgementpage}
 }
 %% در این بخش می‌توانید صفحه تقدیم را به کلاس معرفی کنید. اگر آن را کامنت کنید این صفحه در خروجی نمایش داده نمی‌شود.
 \dedication{
@@ -68,9 +69,18 @@
 }
 
 % محتویات رساله/پایان‌نامه
+
+
+این متن 
+\inind{حاوی}{Contain}
+کلماتی است که می‌خواهیم در نمایه بیاوریم. به عنوان
+\inpdic{مثال}{Example}
+این واژه‌ها را ببینید.
+\indic{سپاسگزاری}{Acknowledgment}
+
 \include{chapter1}
-\include{chapter2}
-\include{chapter3}
+%\include{chapter2}
+%\include{chapter3}
 
 %
 
