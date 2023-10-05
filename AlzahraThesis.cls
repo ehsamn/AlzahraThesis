@@ -33,7 +33,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 \RequirePackage{makeidx}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{multicol}
-\RequirePackage[xindy]{glossaries}
+\RequirePackage[xindy]{glossaries}[=v4.46]
 \RequirePackage{caption}
 \captionsetup[table]{labelsep=space} 
 \captionsetup[figure]{labelsep=space}
@@ -49,6 +49,9 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 \renewcommand\proofname{\textbf{برهان}} 
 % دستوری برای تغییر نام کلمه «کتاب‌نامه» به «مراجع»
 \renewcommand{\bibname}{فهرست منابع و مآخذ}
+
+%\newcommand{\glossarystyle}[1]{\setglossarystyle{#1}}
+%\def\glossarystyle#1{\setglossarystyle{#1}}
 
 
 
@@ -105,11 +108,11 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 \def\includeIndex{
 \renewcommand\glossaryname{نمایه} 
-\glossarystyle{list}
+\myglossarystyle{list}
 \pagestyle{plain}
 \phantomsection‮
 \addcontentsline{toc}{chapter}{نمایه}
-
+%
 \printglossary
 \newpage
 }
@@ -147,7 +150,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 \newglossary[edic]{english}{edics}{edico}{واژه‌نامه انگلیسی به فارسی}
 \newglossary[fdic]{persian}{fdics}{fdico}{واژه‌نامه فارسی به انگلیسی}
-\newglossary[ind]{index}{inds}{indo}{نمایه}
+\newglossary[indx]{index}{indxs}{indxo}{نمایه}
 
 
 
@@ -159,14 +162,14 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 % توسط این دستور واژه مورد نظر در متن، هر دو واژه نامه  می آید.
 \newcommand{\indic}[2]{
-	\newglossaryentry{fa-dic-#1}{type=persian,name={#1}, sort={#1},description={\lr{#2}}}\glsuseri{fa-dic-#1}
-	\newglossaryentry{en-dic-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-dic-#1}
+	\newglossaryentry{fa-dic-#1}{type=persian,name={#1}, sort={#1},description={\lr{#2}}}\glsuseri{fa-dic-#1}%
+	\newglossaryentry{en-dic-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-dic-#1}%
 }
 
 % توسط این دستور واژه مورد نظر فقط در هر دو واژه نامه  می آید.
 \newcommand{\inind}[2]{
-	\newglossaryentry{fa-#1}{type=persian,name={#1}, sort={#1},description={\lr{#2}}}\glsuseri{fa-#1}
-	\newglossaryentry{en-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-#1}
+\newglossaryentry{fa-#1}{type=persian,name={#1}, sort={#1},description={\lr{#2}}}\glsuseri{fa-#1}
+\newglossaryentry{en-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-#1}
 }
 
 \makeglossaries
@@ -277,7 +280,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 \font\timesXIB = "Times New Roman Bold" at 11 pt
 
 
-\font\nazXIVB = "IRNazanin Bold" at 14 pt
+
 
 
 %\def\mainrefs#1{\gdef\@mainrefs{#1}}
@@ -542,7 +545,7 @@ Dissertation
  \newpage
  \@dedication
 }
-!
+
 
 \ifthenelse{\isundefined{\@acknowledgment}} 
 {
@@ -576,9 +579,7 @@ Dissertation
 }
 
 
-% -------------------------------------------------------------------------------------------------------- English vtitle 
-\newcommand{\envtitle}{
-
+\newcommand{\warningCheck}{
 \ifthenelse{\isundefined{\@enfaculty}}
 {
 	\faculty{\warningText{Specify faculty name in English.}}
@@ -596,11 +597,23 @@ Dissertation
 
 \ifthenelse{\isundefined{\@enfield}}
 {
-	\field{\warningText{Specify field in English} }
+	\enfield{--}
 }
+{}
+
+\ifthenelse{\isundefined{\@ensubject}}
 {
+	\ensubject{--} 
+}
+{}
+
 
 }
+
+% -------------------------------------------------------------------------------------------------------- English vtitle 
+\newcommand{\envtitle}{
+
+\warningCheck
 
 \newpage
 \pagestyle{empty}
@@ -862,6 +875,9 @@ Dissertation
 
 %%% ----------------------------------------------------------------------------------> Definition of English specification table
 \newcommand{\enthesisSpecificationTable}{
+
+\warningCheck
+
 \bgroup
 \begin{LTR}
 \begin{latin}
@@ -1175,10 +1191,10 @@ Dissertation
 \titleformat{\subsection}{\subsectionfont\bfseries}{\thesubsection}{1em}{}
 \titleformat{\section}{\sectionfont\bfseries}{\thesection}{1em}{}
 %\titleformat{\chapter}{\chapterfont\bfseries}{\thechapter}{1em}{}
-\renewcommand\thesection{\thechapter.\arabic{section}.}
-\renewcommand\thesubsection{\thechapter.\arabic{section}.\arabic{subsection}.}
-\renewcommand\thefigure{\thechapter.\arabic{figure}}
-\renewcommand\thetable{\thechapter.\arabic{table}}
+\renewcommand\thesection{\thechapter{.}\arabic{section}}
+\renewcommand\thesubsection{\thechapter{.}\arabic{section}{.}\arabic{subsection}}
+\renewcommand\thefigure{\thechapter{.}\arabic{figure}}
+\renewcommand\thetable{\thechapter{.}\arabic{table}}
 
 
 
