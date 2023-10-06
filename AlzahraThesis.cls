@@ -107,13 +107,14 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 
 \def\includeIndex{
-\renewcommand\glossaryname{نمایه} 
+
 \glossarystyle{list}
 \pagestyle{plain}
 \phantomsection‮
 \addcontentsline{toc}{chapter}{نمایه}
 %
-\printglossary
+\renewcommand\glossaryname{نمایه} 
+\printglossary[type=index]
 \newpage
 }
 
@@ -150,7 +151,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 \newglossary[edic]{english}{edics}{edico}{واژه‌نامه انگلیسی به فارسی}
 \newglossary[fdic]{persian}{fdics}{fdico}{واژه‌نامه فارسی به انگلیسی}
-\newglossary[indx]{index}{indxs}{indxo}{نمایه}
+\newglossary[fdic]{index}{fdics}{fdico}{نمایه}
 
 
 
