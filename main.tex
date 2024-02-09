@@ -19,7 +19,7 @@
 
 % اگر از تنظیم draftmode استفاده کنید صفحه‌های مربوط به تقدیم، تشکر و جدول مشخصات پایان‌نامه/رساله نمایش داده نمی‌شود. برای تولید نسخهٔ نهایی draftmode را حذف کنید.
 %% تنظیم phd و msc به ترتیب برای تولید رساله و پایان‌نامه به کار می‌روند.
-\documentclass[msc]{AlzahraThesis}
+\documentclass[msc,draftmode]{AlzahraThesis}
 
 
 %% نسخهٔ نهایی برای ارائه به کتابخانه
@@ -39,7 +39,12 @@
 \input{specifications}
 
 
-
+%% بعضی از بسته‌ها به طور پیش‌فرض فراخوانی می‌شوند. اگر به بسته دیگری نیاز دارید در اینجا باید نام آن را بنویسید.
+%\extrapackages{
+%
+%\usepackage{listings}
+%
+%}
 
 
 \begin{document}
@@ -78,6 +83,9 @@
 این واژه‌ها را ببینید.
 \indic{سپاسگزاری}{Acknowledgment}
 \inind{آنالیز}{Analysis}
+می‌خواهیم ببینیم طول واژه اثری در فاصله
+\inind{چند کلمه که خیلی بزرگ باشند}{Two many words}
+ خالی دارد یا خیر
 \include{chapter1}
 %\include{chapter2}
 %\include{chapter3}

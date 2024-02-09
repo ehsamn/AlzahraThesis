@@ -16,6 +16,13 @@
 Document class for MSc thesis and PhD dissertation for Department of Mathematics, Alzahra University]
 
 \LoadClass[a4paper,10pt]{book}
+
+
+%\def\extrapackages#1{\gdef\@extrapackages{#1}}
+%
+%
+%\@extrapackages
+
 \RequirePackage{xargs}
 \RequirePackage{titlesec}
 \RequirePackage{xspace}
@@ -168,9 +175,9 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 }
 
 % توسط این دستور واژه مورد نظر فقط در هر دو واژه نامه  می آید.
-\newcommand{\inind}[2]{
+\newcommand{\inind}[2]{\@bsphack%
 \newglossaryentry{fa-#1}{type=persian,name={#1}, sort={#1},description={\lr{#2}}}\glsuseri{fa-#1}
-\newglossaryentry{en-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-#1}
+\newglossaryentry{en-#1}{type=english,name={\lr{#2}}, sort={#2},description={#1}}\glsuseri{en-#1}\@esphack
 }
 
 \makeglossaries
@@ -1057,7 +1064,11 @@ Dissertation
 \end{minipage}
 }
 \\\hline
-{\zarXIB رشته/گرایش:} {\zarXI \@subject / \@field}
+{\zarXIB رشته/گرایش:} {
+\begin{minipage}[t]{0.3\textwidth}
+\zarXI \@subject / \@field
+\end{minipage}
+}
 &
 {\zarXIB زمینه پژوهش:}
 \\\hline
