@@ -17,11 +17,16 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 \LoadClass[a4paper,10pt]{book}
 
+\newcommand{\userpackages}{}
+
+\newcommand{\extrapackages}[1]{%
+  \g@addto@macro\userpackages{\RequirePackage{#1}}%
+}
 
 %\def\extrapackages#1{\gdef\@extrapackages{#1}}
 %
 %
-%\@extrapackages
+\userpackages
 
 \RequirePackage{xargs}
 \RequirePackage{titlesec}
