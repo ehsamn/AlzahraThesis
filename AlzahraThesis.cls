@@ -218,8 +218,9 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 
 \newcommand{\acknowledgment}[1]{\def\@acknowledgment{#1}}
 \newcommand{\dedication}[1]{\def\@dedication{#1}}
-\def\@originalitydeclaration{}
 
+
+\def\originalitydeclaration#1{\gdef\@originalitydeclaration{#1}}
 \def\name#1{\gdef\@name{#1}}
 \def\surname#1{\gdef\@surname{#1}}
 \def\keywords#1{\gdef\@keywords{#1}}
@@ -420,6 +421,15 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 }
 %---------------------------------------------------------------------------------------------------------- End specification labels
 
+\def\ifield{
+\ifthenelse{\isundefined{\@field}}
+{
+}
+{
+ گرایش 
+\@field
+}
+}
 
 
 
@@ -507,13 +517,6 @@ Dissertation
 
 }
 
-\ifthenelse{\isundefined{\@field}}
-{
-	\field{\warningText{گرایش را تعیین کنید} }
-}
-{
-
-}
 
 \onCoverTitle
 
@@ -608,11 +611,7 @@ Dissertation
 }
 {}
 
-\ifthenelse{\isundefined{\@enfield}}
-{
-	\enfield{--}
-}
-{}
+
 
 \ifthenelse{\isundefined{\@ensubject}}
 {
@@ -636,7 +635,7 @@ Dissertation
 
 
 \newpage
-\shortbioPage
+%\shortbioPage
 \newpage
 \enabstractPage
 \eninVolumeTitle
@@ -706,8 +705,8 @@ Dissertation
 \par
 {\zarXIIB  رشته
 \@subject \xspace
- گرایش 
-\@field}
+\ifield
+}
 \vskip 1cm
 
 {\zarXVIIIB عنوان \reportLabel}
@@ -745,8 +744,8 @@ Dissertation
 \par
 {\zarXIIB  رشته
 \@subject \xspace
- گرایش 
-\@field}
+\ifield
+}
 \vskip 1cm
 
 {\zarXVIIIB عنوان \reportLabel}
@@ -787,8 +786,8 @@ Dissertation
 \par
 {\zarXIIB  رشته
 \@subject \xspace
- گرایش 
-\@field}
+\ifield
+}
 \vskip 1cm
 
 {\zarXVIIIB عنوان \reportLabel}
@@ -828,7 +827,13 @@ Dissertation
 \vskip .5cm
 
 {\timesXIIB A \enreportLabel Submitted in Partial Fulfillment of the Requirements for
- the Degree of \engradeLabel in \@ensubject \xspace (\@enfield)}
+ the Degree of \engradeLabel in \@ensubject \xspace \ifthenelse{\isundefined{\@enfield}} 
+{
+}
+{
+(\@enfield)
+}
+}
 \par
 \vskip 1cm
 
@@ -863,7 +868,14 @@ Dissertation
 \vskip .5cm
 
 {\timesXIIB A \enreportLabel Submitted in Partial Fulfillment of the Requirements for
- the Degree of \engradeLabel in \@ensubject (\@enfield)}
+ the Degree of \engradeLabel in \@ensubject 
+ \ifthenelse{\isundefined{\@enfield}}
+{
+}
+{
+(\@enfield)
+}
+}
 \par
 \vskip 1cm
 
@@ -969,7 +981,15 @@ Dissertation
 \\\hline
 {\timesXIB Subject:} {\timesXI \@ensubject}
 &
-{\timesXIB Field:} {\timesXI \@enfield}
+{\timesXIB Field:} {\timesXI 
+\ifthenelse{\isundefined{\@enfield}} 
+{
+----
+}
+{
+\@enfield
+}
+}
 \\\hline
 \multicolumn{2}{|c|}{
 \begin{minipage}[t][10cm][t]{\textwidth}
@@ -1071,7 +1091,13 @@ Dissertation
 \\\hline
 {\zarXIB رشته/گرایش:} {
 \begin{minipage}[t]{0.3\textwidth}
-\zarXI \@subject / \@field
+\zarXI \@subject / \ifthenelse{\isundefined{\@field}} 
+{
+---
+}
+{
+\@field
+}
 \end{minipage}
 }
 &
