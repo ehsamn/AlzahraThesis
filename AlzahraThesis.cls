@@ -15,18 +15,11 @@
               [08/03/2021 v1.00
 Document class for MSc thesis and PhD dissertation for Department of Mathematics, Alzahra University]
 
+
+
+
+
 \LoadClass[a4paper,10pt]{book}
-
-\newcommand{\userpackages}{}
-
-\newcommand{\extrapackages}[1]{%
-  \g@addto@macro\userpackages{\RequirePackage{#1}}%
-}
-
-%\def\extrapackages#1{\gdef\@extrapackages{#1}}
-%
-%
-\userpackages
 
 \RequirePackage{xargs}
 \RequirePackage{titlesec}
@@ -50,14 +43,7 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 \captionsetup[table]{labelsep=space} 
 \captionsetup[figure]{labelsep=space}
 
-\RequirePackage[extrafootnotefeatures]{xepersian}
-\settextfont[Scale=1.1]{XB Zar}
-\setdigitfont[Scale=1]{XB Yas}
 
-\defpersianfont\chapternumber[Scale=3]{XB Zar}
-\defpersianfont\chapterfont[Scale=2]{XB Zar}
-\defpersianfont\sectionfont[Scale=1.1]{XB Zar}
-\defpersianfont\subsectionfont[Scale=1]{XB Zar}
 \renewcommand\proofname{\textbf{برهان}} 
 % دستوری برای تغییر نام کلمه «کتاب‌نامه» به «مراجع»
 \renewcommand{\bibname}{فهرست منابع و مآخذ}
@@ -343,10 +329,21 @@ Document class for MSc thesis and PhD dissertation for Department of Mathematics
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtEndOfClass{%
+  \ltx@ifpackageloaded{xepersian}{%
+    \PackageError{AlzahraThesis}{xepersian is already loaded. It should be loaded last.}{}%
+  }{%
 
+  }%
+}
 
 \AtBeginDocument{
 
+
+%  \let\oldRequirePackage\RequirePackage
+%  \let\RequirePackage\@gobble
+%  \@extrapackages
+%  \let\RequirePackage\oldRequirePackage
 
 \if@draftmode
 
@@ -1241,7 +1238,7 @@ Dissertation
 
 
 
-\twocolumnfootnotes
+
 %}
 
 
